@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+    }
+    .slide {
+      display: none;
+      animation: fadein 1s;
+    }
+    .active {
+      display: block;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .balloons {
+      font-size: 4em;
+      animation: float 2s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <audio src="musik.mp3" controls autoplay loop></audio>
+  <div class="balloons">🎈🎉🎈</div>
+  <div id="slides">
+    <div class="slide active">
+      <h1>Selamat Ulang Tahun, Rina!</h1>
+      <img src="gambar1.jpg" alt="Gambar 1" width="300" />
+      <p>Semoga hari ini penuh kebahagiaan, tawa, dan cinta. 🎂💖</p>
+    </div>
+    <div class="slide">
+      <h2>Kenangan Indah</h2>
+      <img src="gambar2.jpg" alt="Gambar 2" width="300" />
+      <p>Terima kasih sudah menjadi teman yang luar biasa!</p>
+    </div>
+    <div class="slide">
+      <h2>Harapan</h2>
+      <img src="gambar3.jpg" alt="Gambar 3" width="300" />
+      <p>Semoga semua impianmu tercapai!</p>
+    </div>
+  </div>
+  <button onclick="prevSlide()">Sebelumnya</button>
+  <button onclick="nextSlide()">Berikutnya</button>
+  <p>Dari: Tao</p>
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(idx) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === idx);
+      });
+    }
+    function nextSlide() {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    }
+    function prevSlide() {
+      current = (current - 1 + slides.length) % slides.length;
+      showSlide(current);
+    }
+  </script>
+</body>
+</html>
